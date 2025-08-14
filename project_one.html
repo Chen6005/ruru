@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本故事集</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background-color: #f0f8f0; /* 淡雅的粉綠色背景 */
+            color: #36454f; /* 柔和的炭灰色文字 */
+            margin: 0;
+            padding: 40px 0; /* Add padding for top and bottom */
+            display: flex;
+            flex-direction: column; /* Arrange items vertically */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 18px;
+            background-color: #d98b98; /* Use theme's pink color */
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 1000; /* Ensure button is on top */
+        }
+        .back-button:hover {
+            background-color: #c27b88; /* A slightly darker pink for hover */
+            transform: translateY(-2px);
+        }
+        .story-section {
+            display: flex;
+            align-items: stretch; /* Make columns equal height */
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            margin: 20px 40px; /* Vertical and horizontal margin */
+            max-width: 960px;
+            width: calc(100% - 80px);
+            overflow: hidden; /* To keep image corners rounded */
+        }
+        .story-image-container {
+            flex: 1.2;
+            min-width: 40%;
+        }
+        .story-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .story-content {
+            flex: 1.5;
+            padding: 30px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .story-content h2 {
+            color: #d98b98;
+            margin-top: 0;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        .story-content p {
+            font-size: 1.05em;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 1em;
+        }
+        /* Alternating layout */
+        .story-section.right-image {
+            flex-direction: row-reverse;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .story-section, .story-section.right-image {
+                flex-direction: column;
+            }
+            .story-content {
+                padding: 25px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-button">返回首頁</a>
+
+    <!-- Story 1: Senso-ji -->
+    <div class="story-section">
+        <div class="story-image-container">
+            <img src="gallery_images/IMG_037351.JPG" alt="東京淺草寺" class="story-image">
+        </div>
+        <div class="story-content">
+            <h2>東京淺草寺：慈悲與歷史的交匯</h2>
+            <p>相傳在西元628年，一對漁民兄弟在隅田川捕魚時，屢次撈起一尊觀音菩薩像。無論他們如何將佛像放回河中，佛像總是奇蹟般地回到他們的網裡。村裡的長者得知此事後，意識到這尊佛像的神聖，便將自己的家改建為寺廟，供奉這尊觀音像。這便是淺草寺的起源，使其成為東京最古老的寺廟。</p>
+        </div>
+    </div>
+
+    <!-- Story 2: Biei Volcano -->
+    <div class="story-section right-image">
+        <div class="story-image-container">
+            <img src="gallery_images/IMG_E4320.JPG" alt="北海道美瑛町火山" class="story-image">
+        </div>
+        <div class="story-content">
+            <h2>美瑛町的創造者：十勝岳的火山低語</h2>
+            <p>北海道的中心，坐落著寧靜優雅的美瑛町，它的美麗風景，源自於一位脾氣時而爆烈、時而溫柔的創造者——十勝岳火山。這座活火山是十勝岳連峰的主峰，數萬年來，它的每一次噴發，都像是一次大地的呼吸，為這片土地帶來毀滅，卻也孕育了新生。</p>
+            <p>火山灰層層堆疊，形成了高低起伏的丘陵，成為了美瑛獨特的畫布。而最神奇的創作，莫過於那夢幻般的「青池」。</p>
+        </div>
+    </div>
+
+</body>
+</html>

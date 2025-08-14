@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title id="pageTitle">Ruru's Japan Travel Blog</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px; /* Base font size for rem units */
+        }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFDF4; /* Fallback color */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('gallery_images/background1.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            color: #4A4A4A;
+            font-size: 1rem; /* 16px */
+        }
+        h1 {
+            font-size: 2.5rem; /* 40px */
+        }
+        h2 {
+            font-size: 1.8rem; /* 28.8px */
+        }
+        p {
+            font-size: 1rem; /* 16px */
+        }
+        nav a {
+            font-size: 1.1rem; /* 17.6px */
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            color: #4A4A4A;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .staggered-title {
+            display: inline-block;
+            text-align: left;
+            font-size: 2.5rem;
+            font-weight: bold;
+            line-height: 1.2;
+
+            /* Main fill color */
+            color: #FF9FCF;
+
+            /* White Stroke (Outline) */
+            -webkit-text-stroke: 1px #FFFFFF;
+            text-stroke: 1px #FFFFFF;
+
+            /* Soft Glow Effect */
+            text-shadow:
+                0 0 6px rgba(255, 255, 255, 0.9), /* Inner glow */
+                0 0 10px rgba(255, 255, 255, 0.8); /* Outer diffusion glow */
+        }
+        .staggered-title .line1 {
+            /* Inherits styles from parent */
+        }
+        .staggered-title .line2 {
+            font-size: 1.8rem;
+            padding-left: 4.5em; /* 向右推移，對齊'願'字下方。可微調此值 */
+        }
+        .staggered-title .line3 {
+            padding-left: 4em; /* 向右推移更多，對齊'の'字下方。可微調此值 */
+        }
+        nav {
+            color: #2C2C2C;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        nav a {
+            color: #2C2C2C;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        nav a:hover {
+            background: #B2E4DB;
+        }
+        .main {
+            padding: 1rem;
+        }
+        .post {
+            margin-bottom: 2rem;
+        }
+        .post h2 {
+            color: #4A4A4A;
+        }
+        .post .meta {
+            font-size: 0.9rem; /* 14.4px */
+            color: #666;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+        .project-card {
+            background: #FFFEFB;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: #4A4A4A;
+            transition: transform 0.2s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: #FFD1DC;
+        }
+        .project-card p {
+            font-size: 1rem;
+        }
+        .project-image-container {
+            position: relative;
+            width: 100%;
+            height: 200px; /* Fixed height for images */
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+        .project-cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image covers the area */
+            transition: transform 0.3s ease-in-out;
+        }
+        .project-description-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(178, 228, 219, 0.7); /* Thin overlay with accent color */
+            color: #4A4A4A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .project-card:hover .project-description-overlay {
+            opacity: 1;
+        }
+        .project-card:hover .project-cover-image {
+            transform: scale(1.05); /* Slightly zoom in on hover */
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #A7D8F0;
+            color: #2C2C2C;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            cursor: pointer; /* Add a pointer cursor on hover */
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ccc;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, textarea, button {
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem; /* 16px */
+        }
+        button {
+            background: #FFD1DC;
+            color: #4A4A4A;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #B2E4DB;
+        }
+        .social-links a {
+            color: #2C2C2C;
+            text-decoration: none;
+            padding: 0 0.5rem;
+        }
+        .social-links a:hover {
+            color: #D9C2E9;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="home-section">
+        <div id="blogTitleWrapper" class="staggered-title">
+            <div class="line1">茹來願</div>
+            <div class="line2">の</div>
+            <div class="line3">茹茹旅記</div>
+        </div>
+        <p id="blogSubtitle">Exploring the beauty of Japan, one trip at a time.</p>
+    </header>
+    <nav>
+        <a href="#home-section" id="navHome">Home</a>
+        <a href="#about-section" id="navAbout">About</a>
+        <a href="#projects-section" id="navProjects">Projects</a>
+        <a href="#gallery-section" id="navGallery">Gallery</a>
+        <a href="#contact-section" id="navContact">Contact</a>
+        <a href="#" onclick="saveLanguagePreference('zh-TW')">繁體中文</a>
+        <a href="#" onclick="saveLanguagePreference('en')">English</a>
+    </nav>
+    <div class="container">
+        <div class="main">
+            <div id="about-section" style="padding-top: 2rem; padding-bottom: 2rem;">
+                <h2 id="aboutTitle">About Me</h2>
+                <p id="aboutContent">Welcome to my travel blog! I'm Ruru, a passionate explorer of Japan. Join me as I share my adventures, from serene temples to bustling city streets, and everything in between. My goal is to inspire your next Japanese journey with authentic experiences and delicious discoveries.</p>
+            </div>
+            <hr>
+            <h2 id="projectsSectionTitle">Our Projects</h2>
+            <div class="project-grid" id="projects-section">
+                <a href="project_one.html" class="project-card">
+                    <div class="project-image-container">
+                        <img src="gallery_images/project_one_cover.jpg" alt="Project One Cover" class="project-cover-image">
+                        <div class="project-description-overlay">
+                            <p id="projectOneCardContent">探索日本著名和隱藏的寶石，從古老的寺廟到繁華的城市景觀。</p>
+                        </div>
+                    </div>
+                    <h3 id="projectOneCardTitle">景點足跡</h3>
+                </a>
+                <a href="project_two.html" class="project-card">
+                    <div class="project-image-container">
+                        <img src="gallery_images/project_two_cover.jpg" alt="Project Two Cover" class="project-cover-image">
+                        <div class="project-description-overlay">
+                            <p id="projectTwoCardContent">一份關於日本各地必嚐美食和餐廳的指南，從街頭小吃到高級餐飲。</p>
+                        </div>
+                    </div>
+                    <h3 id="projectTwoCardTitle">飽腹推薦</h3>
+                </a>
+                <a href="project_three.html" class="project-card">
+                    <div class="project-image-container">
+                        <img src="gallery_images/project_three_cover.jpg" alt="Project Three Cover" class="project-cover-image">
+                        <div class="project-description-overlay">
+                            <p id="projectThreeCardContent">觀看我的旅行影片，透過我的鏡頭體驗日本，內容包括風景優美的路線和文化見解。</p>
+                        </div>
+                    </div>
+                    <h3 id="projectThreeCardTitle">旅記影音集</h3>
+                </a>
+            </div>
+            <hr>
+            <h2 id="galleryTitle">Gallery</h2>
+            <div class="gallery" id="gallery-section">
+                                <img src="gallery_images/IMG_028345.JPG" alt="Gallery Image">
+                <img src="gallery_images/IMG_028058.JPG" alt="Gallery Image">
+                <img src="gallery_images/IMG_028061.JPG" alt="Gallery Image">
+                <img src="gallery_images/IMG_028067.JPG" alt="Gallery Image">
+                <img src="gallery_images/IMG_028087.JPG" alt="Gallery Image">
+                <img src="gallery_images/IMG_028091.JPG" alt="Gallery Image">
+                <img src="gallery_images/IMG_028095.JPG" alt="Gallery Image">
+                <img src="gallery_images/IMG_028116.JPG" alt="Gallery Image">
+                <img src="gallery_images/IMG_028117.JPG" alt="Gallery Image">
+                <img src="gallery_images/IMG_028123.JPG" alt="Gallery Image">
+                <img src="gallery_images/IMG_028125.JPG" alt="Gallery Image">
+                <img src="gallery_images/IMG_028234.JPG" alt="Gallery Image">
+            <hr>
+            <h2 id="contactTitle">Contact Me</h2>
+            <div id="contact-section" style="padding-top: 2rem; padding-bottom: 2rem;">
+                <form>
+                    <input type="text" placeholder="Your Name" id="contactNamePlaceholder">
+                    <input type="email" placeholder="Your Email" id="contactEmailPlaceholder">
+                    <textarea placeholder="Your Message" id="contactMessagePlaceholder"></textarea>
+                    <button type="submit" id="contactSubmitButton">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+        <p id="footerCopyright">Copyright &copy; 2025</p>
+    </footer>
+    <!-- Lightbox container -->
+    <div id="lightbox" class="lightbox" style="display:none;">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

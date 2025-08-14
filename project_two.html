@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>東京市場故事集</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background-color: #f0f8f0; /* 淡雅的粉綠色背景 */
+            color: #36454f; /* 柔和的炭灰色文字 */
+            margin: 0;
+            padding: 40px 0; /* Add padding for top and bottom */
+            display: flex;
+            flex-direction: column; /* Arrange items vertically */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 18px;
+            background-color: #d98b98; /* Use theme's pink color */
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 1000; /* Ensure button is on top */
+        }
+        .back-button:hover {
+            background-color: #c27b88; /* A slightly darker pink for hover */
+            transform: translateY(-2px);
+        }
+        .story-section {
+            display: flex;
+            align-items: stretch; /* Make columns equal height */
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            margin: 20px 40px; /* Vertical and horizontal margin */
+            max-width: 960px;
+            width: calc(100% - 80px);
+            overflow: hidden; /* To keep image corners rounded */
+        }
+        .story-image-container {
+            flex: 1.2;
+            min-width: 40%;
+        }
+        .story-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .story-content {
+            flex: 1.5;
+            padding: 30px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .story-content h2 {
+            color: #d98b98;
+            margin-top: 0;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        .story-content p {
+            font-size: 1.05em;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 1em;
+        }
+        /* Alternating layout */
+        .story-section.right-image {
+            flex-direction: row-reverse;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .story-section, .story-section.right-image {
+                flex-direction: column;
+            }
+            .story-content {
+                padding: 25px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-button">返回首頁</a>
+
+    <!-- Story 1: Ameyoko Seafood -->
+    <div class="story-section">
+        <div class="story-image-container">
+            <img src="gallery_images/IMG_8288.JPG" alt="上野阿美橫丁海鮮店" class="story-image">
+        </div>
+        <div class="story-content">
+            <h2>阿美橫丁的海洋心跳：上野魚草海鮮店</h2>
+            <p>在東京上野的阿美橫丁（アメ横）市場，空氣中永遠混雜著水果的甜香、乾貨的鹹鮮，以及最引人注目的——來自海洋的鮮活氣息。這裡的海鮮店，是市場裡跳動的心臟，展現著東京最生猛、最接地氣的一面。</p>
+            <p>店家的叫賣聲是這裡的背景音樂，宏亮而富有節奏感，「嘿、便宜賣啦！再送你一盒！」的喊聲此起彼落，充滿了江戶時代流傳下來的「叩き売り」的豪爽氣魄。</p>
+        </div>
+    </div>
+
+    <!-- Story 2: Tsukiji Crab -->
+    <div class="story-section right-image">
+        <div class="story-image-container">
+            <img src="gallery_images/IMG_6165.JPG" alt="築地市場螃蟹" class="story-image">
+        </div>
+        <div class="story-content">
+            <h2>築地的赤紅誘惑：蟹專門店的職人精神</h2>
+            <p>儘管主要的魚貨批發已遷至豐洲，築地場外市場的魅力絲毫不減，依舊是饕客們追尋極致海味的聖地。而在這片美食叢林中，螃蟹專門店以其張揚的赤紅色澤和撲鼻的甲殼香氣，佔據著一席之地。</p>
+            <p>食客們圍在小小的攤位旁，迫不及待地接過剛烤好的蟹腳，用竹籤輕輕一挑，那飽滿、細嫩、帶著海洋鹹香與甘甜的蟹肉便應聲而出。這不僅僅是一道菜，更是築地職人對單一食材專注與極致追求的體現。</p>
+        </div>
+    </div>
+
+</body>
+</html>
