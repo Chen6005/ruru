@@ -242,6 +242,74 @@
         .social-links a:hover {
             color: #D9C2E9;
         }
+
+        /* General mobile adjustments */
+        @media (max-width: 768px) {
+            body {
+                font-size: 0.9rem; /* Slightly smaller base font size */
+            }
+            .container {
+                width: 95%; /* More width on smaller screens */
+                margin: 0 auto; /* Center it */
+                padding: 0 10px; /* Add some horizontal padding */
+            }
+            header {
+                padding: 0.5rem 0;
+            }
+            .staggered-title {
+                font-size: 2rem; /* Adjust main title size */
+            }
+            .staggered-title .line2 {
+                font-size: 1.5rem;
+                padding-left: 3em;
+            }
+            .staggered-title .line3 {
+                padding-left: 2.5em;
+            }
+            nav {
+                padding: 0.2rem;
+            }
+            nav a {
+                padding: 0.3rem 0.5rem;
+                font-size: 1rem;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-card {
+                padding: 1rem;
+            }
+            .project-card h3 {
+                font-size: 1.3rem;
+            }
+            .project-image-container {
+                height: 180px;
+            }
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+            input, textarea, button {
+                padding: 0.4rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .staggered-title {
+                font-size: 1.8rem;
+            }
+            .staggered-title .line2 {
+                font-size: 1.3rem;
+                padding-left: 2.5em;
+            }
+            .staggered-title .line3 {
+                padding-left: 2em;
+            }
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
 </head>
